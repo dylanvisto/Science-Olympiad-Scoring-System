@@ -1,0 +1,34 @@
+<html t:type="layout" title="Event List"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"
+      xmlns:p="tapestry:parameter">
+
+
+
+
+
+	<div class="eg">
+        <h2>Division: <b>${divisionName}</b></h2>
+    </div>
+
+
+	<t:grid source="RelatedEvents" row="rowevent" include="Name" add="Edit,Delete,Score">
+	  	<p:editCell>
+	 		<t:pageLink t:page="Edit_Event" context="rowevent.PK">Edit Event</t:pageLink>  
+	  </p:editCell>
+	  	<p:deleteCell>
+	 		<t:eventLink t:event="deleteevent" context="rowevent.PK">Delete Event</t:eventLink>  
+	  </p:deleteCell>
+	  	<p:scoreCell>
+	  		<t:pagelink page="JudgeEvent">Score This Event</t:pagelink>
+	  	</p:scoreCell>
+	</t:grid>
+	
+	<div class="eg">
+		<t:beaneditform t:id="eventForm" object="eventAdd" include="Name" submitLabel="Add Event"/>
+	</div>
+	
+	
+	
+	<t:eventLink t:event="return">Select Another Division</t:eventLink>  
+
+</html>

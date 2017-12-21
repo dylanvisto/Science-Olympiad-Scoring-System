@@ -1,0 +1,16 @@
+<html t:type="layout" title="Team Report"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"
+      xmlns:p="tapestry:parameter">
+    <center><h1>${school.getName()}</h1></center>
+    <table t:type="grid" t:source="scores" t:row="score" t:include="EventName, EventScore">
+		<p:EventNamecell>
+    		<a t:type="pagelink" t:page="Report/Event" t:context="${score.getEventId()}">${eventNameFromScore(score)}</a>
+    	</p:EventNamecell>
+    	<p:Scorecell>
+    		${score.getScore()}
+    	</p:Scorecell>
+    </table>
+	
+	<a t:id="DownloadLink"> test download </a>
+
+</html>

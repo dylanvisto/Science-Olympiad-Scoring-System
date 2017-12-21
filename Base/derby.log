@@ -1,0 +1,10 @@
+----------------------------------------------------------------
+Fri Dec 01 11:09:04 CST 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.8.1.2 - (1095077): instance a816c00e-0160-130d-911d-0000085eff30 
+on database directory memory:D:\Users\Dylan\Desktop\NEW PROJECT\git\Base\testdb  with class loader ContextLoader@Base Tapestry 5 Application 
+Loaded from file:/C:/Users/Dylan/.m2/repository/org/apache/derby/derby/10.8.1.2/derby-10.8.1.2.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_101-b13
+user.dir=D:\Users\Dylan\Desktop\NEW PROJECT\git\Base
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''

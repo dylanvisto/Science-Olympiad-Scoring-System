@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-map xmlns="http://cayenne.apache.org/schema/3.0/modelMap"
+	 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	 xsi:schemaLocation="http://cayenne.apache.org/schema/3.0/modelMap http://cayenne.apache.org/schema/3.0/modelMap.xsd"
+	 project-version="6">
+	<property name="defaultPackage" value="org.example.cayenne.persistent"/>
+	<db-entity name="COMPETITION">
+		<db-attribute name="ID" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="NAME" type="VARCHAR" length="100"/>
+	</db-entity>
+	<db-entity name="DIVISION">
+		<db-attribute name="COMPETITION_ID" type="INTEGER"/>
+		<db-attribute name="ID" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="NAME" type="VARCHAR" length="100"/>
+	</db-entity>
+	<db-entity name="EVENT">
+		<db-attribute name="DIVISION_ID" type="INTEGER"/>
+		<db-attribute name="ID" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="JUDGE_ID" type="INTEGER"/>
+		<db-attribute name="NAME" type="VARCHAR" length="100"/>
+	</db-entity>
+	<db-entity name="EVENT_ROSTER">
+		<db-attribute name="EVENT_ID" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="FACILITATOR_ID" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="ID" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="FACILITATOR">
+		<db-attribute name="COMPETITION_ID" type="INTEGER"/>
+		<db-attribute name="FIRSTNAME" type="VARCHAR" length="100"/>
+		<db-attribute name="ID" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="LASTNAME" type="VARCHAR" length="100"/>
+		<db-attribute name="MAIN_JUDGE" type="BOOLEAN"/>
+		<db-attribute name="PASSWORD" type="VARCHAR" length="100"/>
+		<db-attribute name="USERNAME" type="VARCHAR" length="100"/>
+	</db-entity>
+	<db-entity name="SCHOOL">
+		<db-attribute name="CLASS_TYPE" type="VARCHAR" length="40"/>
+		<db-attribute name="DIVISION_ID" type="INTEGER"/>
+		<db-attribute name="ID" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="NAME" type="VARCHAR" length="100"/>
+	</db-entity>
+	<db-entity name="SCORES">
+		<db-attribute name="EVENT_ID" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="ID" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="SCHOOL_ID" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="SCORE" type="INTEGER"/>
+	</db-entity>
+	<obj-entity name="Competition" className="org.example.cayenne.persistent.Competition" dbEntityName="COMPETITION">
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME"/>
+	</obj-entity>
+	<obj-entity name="Division" className="org.example.cayenne.persistent.Division" dbEntityName="DIVISION">
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME"/>
+	</obj-entity>
+	<obj-entity name="Event" className="org.example.cayenne.persistent.Event" dbEntityName="EVENT">
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME"/>
+	</obj-entity>
+	<obj-entity name="EventRoster" className="org.example.cayenne.persistent.EventRoster" dbEntityName="EVENT_ROSTER">
+		<obj-attribute name="eventId" type="java.lang.Integer" db-attribute-path="EVENT_ID"/>
+		<obj-attribute name="facilitatorId" type="java.lang.Integer" db-attribute-path="FACILITATOR_ID"/>
+	</obj-entity>
+	<obj-entity name="Facilitator" className="org.example.cayenne.persistent.Facilitator" dbEntityName="FACILITATOR">
+		<obj-attribute name="firstname" type="java.lang.String" db-attribute-path="FIRSTNAME"/>
+		<obj-attribute name="lastname" type="java.lang.String" db-attribute-path="LASTNAME"/>
+		<obj-attribute name="mainJudge" type="java.lang.Boolean" db-attribute-path="MAIN_JUDGE"/>
+		<obj-attribute name="password" type="java.lang.String" db-attribute-path="PASSWORD"/>
+		<obj-attribute name="username" type="java.lang.String" db-attribute-path="USERNAME"/>
+	</obj-entity>
+	<obj-entity name="School" className="org.example.cayenne.persistent.School" dbEntityName="SCHOOL">
+		<obj-attribute name="classType" type="java.lang.String" db-attribute-path="CLASS_TYPE"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="NAME"/>
+	</obj-entity>
+	<obj-entity name="Scores" className="org.example.cayenne.persistent.Scores" dbEntityName="SCORES">
+		<obj-attribute name="eventId" type="java.lang.Integer" db-attribute-path="EVENT_ID"/>
+		<obj-attribute name="schoolId" type="java.lang.Integer" db-attribute-path="SCHOOL_ID"/>
+		<obj-attribute name="score" type="java.lang.Integer" db-attribute-path="SCORE"/>
+	</obj-entity>
+	<db-relationship name="divisions" source="COMPETITION" target="DIVISION" toMany="true">
+		<db-attribute-pair source="ID" target="COMPETITION_ID"/>
+	</db-relationship>
+	<db-relationship name="judges" source="COMPETITION" target="FACILITATOR" toMany="true">
+		<db-attribute-pair source="ID" target="COMPETITION_ID"/>
+	</db-relationship>
+	<db-relationship name="competition" source="DIVISION" target="COMPETITION" toMany="false">
+		<db-attribute-pair source="COMPETITION_ID" target="ID"/>
+	</db-relationship>
+	<db-relationship name="events" source="DIVISION" target="EVENT" toMany="true">
+		<db-attribute-pair source="ID" target="DIVISION_ID"/>
+	</db-relationship>
+	<db-relationship name="schools" source="DIVISION" target="SCHOOL" toMany="true">
+		<db-attribute-pair source="ID" target="DIVISION_ID"/>
+	</db-relationship>
+	<db-relationship name="division" source="EVENT" target="DIVISION" toMany="false">
+		<db-attribute-pair source="DIVISION_ID" target="ID"/>
+	</db-relationship>
+	<db-relationship name="facilitator" source="EVENT" target="EVENT_ROSTER" toMany="true">
+		<db-attribute-pair source="JUDGE_ID" target="ID"/>
+	</db-relationship>
+	<db-relationship name="scores" source="EVENT" target="SCORES" toMany="true">
+		<db-attribute-pair source="ID" target="EVENT_ID"/>
+	</db-relationship>
+	<db-relationship name="event" source="EVENT_ROSTER" target="EVENT" toMany="true">
+		<db-attribute-pair source="ID" target="JUDGE_ID"/>
+	</db-relationship>
+	<db-relationship name="facilitator" source="EVENT_ROSTER" target="FACILITATOR" toMany="true">
+		<db-attribute-pair source="FACILITATOR_ID" target="ID"/>
+	</db-relationship>
+	<db-relationship name="competition" source="FACILITATOR" target="COMPETITION" toMany="false">
+		<db-attribute-pair source="COMPETITION_ID" target="ID"/>
+	</db-relationship>
+	<db-relationship name="event" source="FACILITATOR" target="EVENT_ROSTER" toMany="true">
+		<db-attribute-pair source="ID" target="FACILITATOR_ID"/>
+	</db-relationship>
+	<db-relationship name="division" source="SCHOOL" target="DIVISION" toMany="false">
+		<db-attribute-pair source="DIVISION_ID" target="ID"/>
+	</db-relationship>
+	<db-relationship name="scores" source="SCHOOL" target="SCORES" toMany="true">
+		<db-attribute-pair source="ID" target="SCHOOL_ID"/>
+	</db-relationship>
+	<db-relationship name="events" source="SCORES" target="EVENT" toMany="false">
+		<db-attribute-pair source="EVENT_ID" target="ID"/>
+	</db-relationship>
+	<db-relationship name="schools" source="SCORES" target="SCHOOL" toMany="true">
+		<db-attribute-pair source="SCHOOL_ID" target="ID"/>
+	</db-relationship>
+	<obj-relationship name="divisions" source="Competition" target="Division" deleteRule="Deny" db-relationship-path="divisions"/>
+	<obj-relationship name="judges" source="Competition" target="Facilitator" deleteRule="Deny" db-relationship-path="judges"/>
+	<obj-relationship name="competition" source="Division" target="Competition" deleteRule="Nullify" db-relationship-path="competition"/>
+	<obj-relationship name="events" source="Division" target="Event" deleteRule="Deny" db-relationship-path="events"/>
+	<obj-relationship name="schools" source="Division" target="School" deleteRule="Deny" db-relationship-path="schools"/>
+	<obj-relationship name="division" source="Event" target="Division" deleteRule="Nullify" db-relationship-path="division"/>
+	<obj-relationship name="judge" source="Event" target="EventRoster" deleteRule="Cascade" db-relationship-path="facilitator"/>
+	<obj-relationship name="event" source="EventRoster" target="Event" deleteRule="Nullify" db-relationship-path="event"/>
+	<obj-relationship name="facilitator" source="EventRoster" target="Facilitator" deleteRule="Cascade" db-relationship-path="facilitator"/>
+	<obj-relationship name="competition" source="Facilitator" target="Competition" deleteRule="Nullify" db-relationship-path="competition"/>
+	<obj-relationship name="event" source="Facilitator" target="EventRoster" deleteRule="Cascade" db-relationship-path="event"/>
+	<obj-relationship name="division" source="School" target="Division" deleteRule="Nullify" db-relationship-path="division"/>
+</data-map>

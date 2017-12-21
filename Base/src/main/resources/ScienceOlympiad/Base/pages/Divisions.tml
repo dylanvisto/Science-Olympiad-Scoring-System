@@ -1,0 +1,27 @@
+<html t:type="layout" title="Division Report"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"
+      xmlns:p="tapestry:parameter">
+
+	<center><h1>${division.getName()}</h1></center>
+    <h1>Schools:</h1>
+    <table t:type="grid" t:source="teams" t:row="team" t:include="name" t:add="class">
+		<p:namecell>
+    		<a t:type="pagelink" t:page="Teams" t:context="team.getPK()">${team.name}</a>
+    	</p:namecell>
+    	<p:classCell>
+    		${team.getClassType()}
+    	</p:classCell>
+    </table>
+    <h1>Events:</h1>
+    <table t:type="grid" t:source="events" t:row="event" t:include="name" t:add="judges">
+		<p:namecell>
+    		<a t:type="pagelink" t:page="Events" t:context="event.getPK()">${event.name}</a>
+    	</p:namecell>
+    	<p:judge>
+    		${getJudgeFromEvent(event)}
+    	</p:judge>
+    </table>
+
+	<a t:id="DownloadLink"> Generate Report </a>
+
+</html>

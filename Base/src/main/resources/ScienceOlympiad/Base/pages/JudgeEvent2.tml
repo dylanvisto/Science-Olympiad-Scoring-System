@@ -1,0 +1,16 @@
+<html t:type="layout" title="Judge's Score Panel"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"
+      xmlns:p="tapestry:parameter">
+      
+      <head>
+      <p style="text-align:center;">Please enter team score to rank, then hit submit when done.</p>
+      </head>
+      
+      <t:form t:id="newScoreForm">
+    	<h4>Score:</h4><t:textfield t:id="newScore"/>
+    	<br/>
+    	<t:submit value="Submit"/>
+      </t:form>
+      
+      
+</html> 

@@ -1,0 +1,20 @@
+<html t:type="layout" title="Event Data"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"
+      xmlns:p="tapestry:parameter">
+
+
+<t:grid source="Cars" row="rowcar" add="Delete,Edit">
+  <p:deleteCell>
+ 		<t:eventLink t:event="delete" context="rowcar.id">Delete Car</t:eventLink>  
+ 		</p:deleteCell>
+ 		<p:EditCell>
+ 		<t:eventLink t:event="Edit" context="rowcar.id">Edit Car</t:eventLink>  
+ 		</p:EditCell>
+ 		     
+  </t:grid>
+
+
+
+
+</html>
+      

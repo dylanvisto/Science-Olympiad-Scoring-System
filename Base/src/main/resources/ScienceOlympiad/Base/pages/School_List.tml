@@ -1,0 +1,28 @@
+<html t:type="layout" title="School List"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"
+      xmlns:p="tapestry:parameter">
+
+
+	<div class="eg">
+        <h2>Division: <b>${divisionName}</b></h2>
+    </div>
+	
+	<t:grid source="RelatedSchools" row="rowschool" include="Name, ClassType" add="Edit,Delete">
+		<p:editCell>
+	 		<t:pageLink t:page="Edit_School" context="rowschool.PK">Edit School</t:pageLink>  
+	  </p:editCell>
+		<p:deleteCell>
+	 		<t:eventLink t:event="deleteschool" context="rowschool.PK">Delete School</t:eventLink>  
+	  </p:deleteCell>
+	  
+	</t:grid>
+	
+	<div class="eg">
+		<t:beaneditform t:id="schoolForm" object="schooladd" include="Name, ClassType"  submitLabel="Add School"/>
+	</div>
+	
+	
+	
+	<t:eventLink t:event="return">Select Another Division</t:eventLink>  
+
+</html>

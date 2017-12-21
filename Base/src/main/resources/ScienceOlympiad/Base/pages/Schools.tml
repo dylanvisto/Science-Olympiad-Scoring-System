@@ -1,0 +1,18 @@
+<html t:type="layout" title="Schools"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"
+      xmlns:p="tapestry:parameter">
+      
+    <h2>
+		<!-- <t:pagelink page="School_Create" class="btn btn-default" style="font-size: 28; float: right;">Create School</t:pagelink> -->
+	</h2>
+	<table t:type="grid" t:source="schools" t:row="school" t:include="schoolName" t:add="details, delete">
+		<p:detailsCell>
+			<t:pagelink page="School_Data">View</t:pagelink>
+		</p:detailsCell>
+		<p:deleteCell>
+			<t:eventlink event="DeleteSchool" context="[school.schoolName]">Delete</t:eventlink>
+		</p:deleteCell>
+	</table>
+      
+</html>
+      

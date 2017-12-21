@@ -1,0 +1,23 @@
+<html t:type="layout" title="Edit Competition"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"
+      xmlns:p="tapestry:parameter">
+
+
+		<div class="ef">
+        <p>You asked for event PK ${eventID}.</p>
+    	</div>
+		
+		<t:grid source="RelatedEvents" row="rowevent" include="Name" add="Delete">
+			<p:deleteCell>
+		 		<t:eventLink t:event="deleteevent" context="rowevent.PK">Delete Event</t:eventLink>  
+		  	</p:deleteCell>
+		</t:grid>
+	
+
+		<t:eventLink t:event="return">Go back to Edit Competition</t:eventLink>
+		
+		
+</html>
+
+
+

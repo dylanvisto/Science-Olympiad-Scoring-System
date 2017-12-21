@@ -1,0 +1,25 @@
+<html t:type="layout" title="Competition_Creation"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"
+      xmlns:p="tapestry:parameter">
+      
+      
+	<br/>
+	<table t:type="grid" t:source="RelatedCompetitions" t:row="rowcompetition" t:include="name" t:add="assign, edit, delete">
+		<p:assignCell>
+			<t:eventlink event="AssignJudges" context="rowcompetition.PK">Assign Judges</t:eventlink>
+		</p:assignCell>
+		<p:editCell>
+			<t:pagelink page="Edit_CompName" context="rowcompetition.PK">Edit</t:pagelink>
+		</p:editCell>
+		<p:deleteCell>
+			<t:eventlink event="delete" context="rowcompetition.PK">Delete</t:eventlink>
+		</p:deleteCell>
+	</table>
+	<br/>
+    <t:form t:id="newCompForm">
+    	<h4>Competition Name:</h4><t:textfield t:id="newName"/>
+    	<br/>
+    	<t:submit value="Create New Competition"/>
+    </t:form>
+</html>
+      

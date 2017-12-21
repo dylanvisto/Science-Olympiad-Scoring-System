@@ -1,0 +1,49 @@
+<html t:type="layout" title="Facilitators"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"
+      xmlns:p="tapestry:parameter">
+	
+	<div class="eg">
+        <h2>Competition: <b>${compName}</b></h2>
+    </div>
+    <div class="ek">
+        <p>Steps:<br />1) Create a Judge<br />
+        		 	   2) Select A Judge<br />
+        		 	   3) Assign Event to Selected Judge<br />
+        </p>
+    </div>
+	<t:grid source="RelatedJudges" row="rowjudge" include="Firstname, Lastname, MainJudge, Username, Password" add="Edit,Delete,Select,Events">
+		<p:editCell>
+			<t:pageLink t:page="Edit_Judge" context="rowjudge.PK">Edit</t:pageLink>  
+		</p:editCell>
+		<p:deleteCell>
+	 		<t:eventLink t:event="deletejudge" context="rowjudge.PK">Delete</t:eventLink>  
+	  </p:deleteCell>
+	  <p:selectCell>
+	 		<t:eventLink t:event="selectjudge" context="rowjudge.PK">Select</t:eventLink>  
+	  </p:selectCell>
+	  <p:EventsCell>
+	 		<t:eventLink t:event="viewjudge" context="rowjudge.PK">View Events</t:eventLink>  
+	  </p:EventsCell>
+	</t:grid>
+	<div class="eg">
+		<t:beaneditform t:id="JudgeForm" object="newJudge" include="Firstname, Lastname, MainJudge, Username, Password"  submitLabel="Add Judge"/>
+	</div>
+	<div class="ez">
+        <t:form t:id="EventSelect" class="form-inline">
+            <div class="form-group">
+                Event: 
+                <t:select model="eventSelectModel" value="selectedEvent" encoder="eventEncoder"/>
+            </div>
+            <div class="form-group">
+                <t:submit/>
+            </div>
+        </t:form>
+    </div>
+	<div class="ef">
+        <h2>Selected Facilitator: <b>${selectedFirstName} ${selectedLastName}</b></h2>
+    </div>
+	<br/>
+	<t:eventLink t:event="return">Back to Competition Creation</t:eventLink>
+	
+	 
+</html>

@@ -1,0 +1,8 @@
+<html t:type="layout" title="Edit School"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"
+      xmlns:p="tapestry:parameter">
+	
+	<div class="eg">
+            <t:beaneditform t:id="editForm" object="school" include="Name,ClassType" submitLabel="Save"></t:beaneditform>
+    </div>
+</html>

@@ -1,0 +1,15 @@
+<html t:type="layout" title="Judge's Score Panel"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"
+      xmlns:p="tapestry:parameter">
+      
+      <head>
+      <p style="text-align:center;">Please enter team score to rank, then hit submit when done.</p>
+      </head>
+      
+      <table t:type="grid" t:source="teams" t:row="team" t:include="name" t:add="score, select">
+      	<p:selectCell>
+      		<t:pagelink page="JudgeEvent2">Assign Score</t:pagelink>
+      	</p:selectCell>
+      </table>
+      
+ </html> 

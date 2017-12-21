@@ -1,0 +1,29 @@
+<html t:type="layout" title="Science Olympiad"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"
+        >
+
+    <div class="bodyContent">
+    	<img class="center" src="${asset:context:images/SCI_OLY_LOGO.jpeg}" alt="Image Not Found"/>
+    	
+    	<h3>Welcome</h3>
+    	<p class="index">
+    		We welcome to the NDSU Science Olympiad Scoring web software. 
+    		This site was built with the intension of assisting in the scoring process of the annual Science Olympiad contest held on the NDSU campus.
+    		It features a number of pages built to make adding new scores, adjusting previous scores, and viewing contest information as straight forward and intuitive as possible.
+    		We hope you enjoy this product!
+    	</p>
+    	
+    	<h3>Getting Started</h3>
+    	<p class="index">
+    		The first thing you'll want to do is click the "Sign In" button located at the top right corner of the site.
+    		<br/><br/>
+    		<img class="center" style="border: 0.1em solid black;" src="${asset:context:images/INDEX_LOGIN_BUTTON.png}" alt="Image Not Found"/>
+    		<br/>
+    		This will bring you to the Login page where you can sign in to the site with your user account.
+    		
+    	</p>
+    	
+    </div>
+
+
+</html>

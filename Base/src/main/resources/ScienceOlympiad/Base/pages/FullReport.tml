@@ -1,0 +1,16 @@
+<html t:type="layout" title="Reports"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"
+      xmlns:p="tapestry:parameter">
+
+    <h1>Reports!!</h1>
+    
+    <table t:type="grid" t:source="divisions" t:row="division" t:include="name">
+		<p:namecell>
+    		<a t:type="pagelink" t:page="Report/Division" t:context="division.getName()">${division.name}</a>
+    	</p:namecell>
+    </table>
+	
+
+	<a t:id="DownloadLink"> test download </a>
+
+</html>
